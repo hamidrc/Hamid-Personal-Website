@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+
+@mixin social-container($color) {
+  .social-cube {
+    .front, .back {
+      background: $color;
+    }
+    .bottom {
+      background: darken($color, 10%);
+    }
+  }
+  &:hover .social-cube {
+    .bottom {
+      background: $color;
+    }
+    .front {
+      background: lighten($color, 10%);
+    }
+  }
+}
+
+// Social container styles
+.social-container {
+  position: relative;
+  display: inline-block;
+  width: 5.5vw;
+  margin-right: 5%;
+  height: auto;
+  font-size: 1vw;
+  .social-cube {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.333s;
+    transform: translateZ(-18px);
+    .front, .bottom {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+    .front {
+      transform: rotateX(0deg) translateZ(18px);
+    }
+    .bottom {
+      transform: rotateX(-90deg) translateZ(18px);
+    }
+  }
+  
+  &:hover .social-cube {
+    transform: translateZ(-18px) rotateX(90deg);
+  }
+}
